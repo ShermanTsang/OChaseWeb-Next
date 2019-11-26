@@ -1,3 +1,5 @@
 export default () => ({
-  testList: []
+  configurationList: [],
+  fileAssetList: [],
+  imageAssetList: []
 })

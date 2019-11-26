@@ -1,4 +1,4 @@
-# NuxtModel
+# OChase
 
 > It's ShareMan's nuxt based project model.
 

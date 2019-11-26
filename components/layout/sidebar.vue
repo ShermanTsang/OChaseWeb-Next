@@ -18,12 +18,6 @@
       display: flex;
       flex-flow: column nowrap;
 
-      &__logo {
-        padding: 20px 0;
-        text-align: center;
-        border-bottom: 1px solid #eee;
-      }
-
       &__menu {
         display: flex;
         flex-flow: column nowrap;
@@ -130,16 +124,13 @@
 <template>
   <div class="sidebar">
     <div class="sidebar__container">
-      <div class="sidebar__container__logo">
-        <Logo type="text" width="85%" />
-      </div>
       <div class="sidebar__container__menu">
         <div
           v-for="(item,index) in $store.getters.moduleList"
           :key="index"
-          class="sidebar__container__menu__item"
           :class="{'sidebar__container__menu__item--active': isActiveMenu(item)}"
           @click="$router.push(`/${item.url}`)"
+          class="sidebar__container__menu__item"
         >
           <div class="sidebar__container__menu__item__icon">
             <Icon :name="item.icon" size="24px" />

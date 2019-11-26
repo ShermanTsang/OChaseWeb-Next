@@ -1,5 +1,11 @@
 export default {
-  testList(state) {
-    return state.testList
-  }
+  configurationList(state) {
+    return state.configurationList
+  },
+  fileAssetList(state) {
+    return state.fileAssetList
+  },
+  imageAssetList(state) {
+    return state.imageAssetList
+  },
 }

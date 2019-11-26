@@ -1,0 +1,57 @@
+<style lang="scss">
+  .search {
+    input {
+      outline: none;
+      color: #999;
+      letter-spacing: 1px;
+      width: 340px;
+      padding: 10px 16px 10px 40px;
+      border-radius: 1px;
+      max-width: 100%;
+      transition: all .2s ease-in-out;
+      background: #fff url('../../assets/image/search.png') 8px 5px no-repeat;
+      background-size: 28px;
+      border: 1px solid #ddd;
+
+      @media ($screen-sm-min) {
+        &:focus {
+          color: #666;
+          width: 360px;
+          box-shadow: rgba(177, 177, 177, 0.2) 0 0 10px inset;
+          background-color: rgb(248, 248, 248);
+        }
+      }
+    }
+  }
+</style>
+
+<template>
+  <div class="search">
+    <input v-model="form.keyword" @keyup.enter="search" type="text" placeholder="搜索...">
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SearchBox',
+  props: {},
+  data() {
+    return {
+      form: {
+        keyword: this.$route.query.keyword
+      }
+    }
+  },
+  methods: {
+    search() {
+      const keyword = this.form.keyword.replace(/\s/g, '')
+      if (!keyword || keyword.length === 0) {
+        this.$message.error('关键字不能为空')
+        return
+      }
+      this.$router.push({ name: 'search', query: { keyword } })
+      this.$emit('on-search')
+    }
+  }
+}
+</script>

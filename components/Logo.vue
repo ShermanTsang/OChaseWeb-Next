@@ -7,7 +7,7 @@
 
 <template>
   <div class="logo">
-    <img :src="image" alt="logo" :style="style" @click="$router.push('/')">
+    <img :src="image" :style="style" @click="$router.push('/')" alt="logo">
   </div>
 </template>
 

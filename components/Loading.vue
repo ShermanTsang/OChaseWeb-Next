@@ -82,12 +82,12 @@
 </style>
 
 <template>
-  <div class="loading" :class="{'loading--fixed': fix}">
-    <div class="loading__element" :style="style">
+  <div :class="{'loading--fixed': fix}" class="loading">
+    <div :style="style" class="loading__element">
       <div class="loading__element__bounce1"></div>
       <div class="loading__element__bounce2"></div>
     </div>
-    <div v-if="$slots.default[0]" class="loading__text">
+    <div v-if="$slots.default && $slots.default[0]" class="loading__text">
       <slot></slot>
     </div>
   </div>

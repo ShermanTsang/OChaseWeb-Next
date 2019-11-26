@@ -1,5 +1,11 @@
 export default {
-  testList(state, data) {
-    state.testList = data
+  configurationList(state, data) {
+    state.configurationList = data
+  },
+  imageAssetList(state, data) {
+    state.imageAssetList = data
+  },
+  fileAssetList(state, data) {
+    state.fileAssetList = data
   }
 }

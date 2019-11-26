@@ -1,23 +1,4 @@
 <style lang="scss">
-  .layout-sidebar {
-    display: none;
-    @media ($screen-md-min) {
-      display: block;
-    }
-  }
-
-  .layout-header {
-    display: block;
-    @media ($screen-md-min) {
-      display: none;
-    }
-  }
-
-  .layout-main {
-    @media ($screen-md-min) {
-      margin-left: $sidebar-width;
-    }
-  }
 </style>
 
 <template>

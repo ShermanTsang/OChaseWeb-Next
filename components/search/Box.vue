@@ -5,11 +5,14 @@
       color: #999;
       letter-spacing: 1px;
       width: 340px;
-      padding: 10px 16px 10px 40px;
+      padding: 10px 40px 10px 16px;
       border-radius: 1px;
       max-width: 100%;
       transition: all .2s ease-in-out;
-      background: #fff url('../../assets/image/search.png') 8px 5px no-repeat;
+      background-image: url('../../assets/image/search.png');
+      background-repeat: no-repeat;
+      /*background-position: 305px 5px;*/
+      background-position: center right;
       background-size: 28px;
       border: 1px solid #ddd;
 

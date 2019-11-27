@@ -1,22 +1,59 @@
 <style lang="scss">
   .search-page {
 
-    &__body {
+    &__main {
       display: flex;
       flex-flow: row nowrap;
-      height: calc(100vh - 64px);
+      padding-top: 64px;
+      height: 100vh;
 
-      &__frame {
+      &__web {
         position: relative;
         width: 100%;
         flex-grow: 1;
 
-        iframe {
+        &__iframe {
+          opacity: .6;
           width: 100%;
           height: 100%;
-          border: none;
+          transition: opacity .2s ease-in-out;
+
+          iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+          }
+
+          &:hover {
+            opacity: 1;
+          }
+
         }
+
+        &__toolbar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          padding: 10px 16px;
+          background-color: rgba(255, 255, 255, .95);
+          box-shadow: 0 -2px 4px rgba(177, 177, 177, .2);
+          letter-spacing: 2px;
+
+          &__info {
+            font-size: .9rem;
+            color: #666;
+
+            span {
+              font-size: .85rem;
+              color: #999;
+            }
+          }
+        }
+
       }
+
     }
   }
 </style>
@@ -26,25 +63,30 @@
     <search-header class="layout-search-header">
       <search-box @on-search="refreshResult" />
     </search-header>
-    <div class="search-page__body">
-      <div v-for="item in status.activeEngineList" :key="item.slug" class="search-page__body__frame">
+    <div class="search-page__main">
+      <div v-for="item in status.activeEngineList" :key="item.slug" class="search-page__main__web">
         <Loading :fix="true" v-if="item.isLoading">
           {{ item.name }}加载中...
         </Loading>
-        <iframe :src="getSearchEngineUrl(item.url)" :id="`iframe-${item.slug}`" allowtransparency></iframe>
+        <div class="search-page__main__web__iframe">
+          <iframe :src="getSearchEngineUrl(item.url)" :id="`iframe-${item.slug}`" allowtransparency></iframe>
+        </div>
+        <div class="search-page__main__web__toolbar">
+          <div class="search-page__main__web__toolbar__info">
+            <span>{{ item.category }} /</span> {{ item.name }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SearchBox from '../../components/search/Box'
 export default {
-  components: { SearchBox },
   layout: 'search',
   head() {
     return {
-      title: `搜索 - ${this.displayKeyword}`,
+      title: `${this.displayKeyword} - 逐搜`,
       meta: [
         { hid: 'index', name: 'description', content: this.$getSeoInfo('description', '多栏搜索') }
       ]

@@ -116,7 +116,7 @@
   <header class="header">
     <div class="header__container">
       <div class="header__container__logo">
-        <Logo type="text" height="36px" />
+        <Logo type="image" height="36px" />
       </div>
       <div id="headerMenu" class="header__container__menu">
         <div

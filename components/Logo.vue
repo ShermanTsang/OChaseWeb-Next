@@ -2,12 +2,15 @@
   .logo {
     cursor: pointer;
     font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #999;
   }
 </style>
 
 <template>
   <div class="logo">
-    <img :src="image" :style="style" @click="$router.push('/')" alt="logo">
+    <img :src="image" :style="style" @click="$router.push('/')" v-if="type === 'image'" alt="logo">
+    <slot></slot>
   </div>
 </template>
 
@@ -19,7 +22,7 @@ export default {
       type: String,
       default: 'text',
       validator(value) {
-        return ['text', 'icon'].includes(value)
+        return ['image', 'icon'].includes(value)
       }
     },
     height: {

@@ -15,8 +15,6 @@ export default {
     }
   },
   mounted() {
-    if (process.browser) {
-    }
   },
   methods: {}
 }
